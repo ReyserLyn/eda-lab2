@@ -1,0 +1,191 @@
+%package list
+\documentclass{article}
+\usepackage[english,spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[top=3cm, bottom=3cm, outer=3cm, inner=3cm]{geometry}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{array}
+\newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
+\usepackage{natbib}
+\usepackage{pdfpages}
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\usepackage{svg}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{array}
+\usepackage[english,spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{color, colortbl}
+
+\lstdefinestyle{ascii-tree}{
+    literate={├}{|}1 {─}{--}1 {└}{+}1 
+  }
+  
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{red},
+  keywordstyle=\color{blue}
+}
+
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{N}{@{}m{0pt}@{}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%  ITEMS  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\itemUniversity}{Universidad Nacional de San Agustín de Arequipa}
+\newcommand{\itemFaculty}{Facultad de Ingeniería de Producción y Servicios}
+\newcommand{\itemSchool}{Escuela Profesional de Ingeniería de Sistemas}
+\newcommand{\itemCourse}{Estructura de datos y Algoritmos}
+\newcommand{\itemTheme}{Técnicas de Diseño de Algoritmos}
+
+%%%%%%%%%%%%%%%%%%%%%%%%   HEADER   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\AtBeginDocument{\selectlanguage{spanish}}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\refname}{Referencias}
+\renewcommand{\tablename}{Tabla} 
+\AtBeginDocument{%
+	\renewcommand\tablename{Tabla}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{30pt}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+\fancyhead[L]{\raisebox{-0.2\height}{\includegraphics[width=3cm]{img/logo_episunsa.png}}}
+\fancyhead[C]{\fontsize{7}{7}\selectfont	\itemUniversity \\ \itemFaculty \\ \itemDepartment \\ \itemSchool \\ \textbf{\itemCourse}}
+\fancyhead[R]{\raisebox{-0.2\height}{\includegraphics[width=1.2cm]{img/logo_abet}}}
+
+\fancyfoot[L]{Reyser Z. - Jhastyn P.}
+\fancyfoot[C]{\itemCourse}
+\fancyfoot[R]{Página \thepage}
+
+% para el codigo fuente
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{codebackground}{rgb}{89, 0.97, 0.90}
+\definecolor{tablebackground}{rgb}{0.8, 0, 0}
+
+\lstset{frame=tb,
+	language=bash,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3,
+	backgroundcolor= \color{codebackground},
+}
+
+%%%%%%%%%%%%%%%%%%%%%%   CARATULA  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document} 
+    \begin{titlepage}
+    \centering
+    
+    {\bfseries\LARGE {\itemUniversity} \par} \vspace{0.3 cm}
+    {\scshape\Large {\itemFaculty} \par} \vspace{0.3 cm}
+    {\scshape\Large {\itemSchool} \par}\vspace{1 cm}
+
+    {\includegraphics[width=0.4\textwidth]{{img/logo_unsa_corto.png}}\par}
+    \vspace{0.5 cm}
+    
+    {\scshape\LARGE  INFORME DE TRABAJO GRUPAL \par}
+    {\scshape\Large {\itemCourse} \par}
+    \vspace{1 cm}
+    
+    {\Large Alumnos:\par}
+    {\begin{itemize} \centering 
+        \item {\Large Payehuanca Riquelme Jhastyn Jefferson\par}
+        \item {\Large Zapata Butron Reyser Julio\par}
+    \end{itemize}}
+    \vspace{0.5 cm}
+    
+    {\Large Docente:\par}
+    {\Large Quispe Vergaray Karen Melissa\par}
+    \vfill
+    \vspace{1 cm}
+    
+    {\Large 30 de septiembre 2023 \par}
+    {\Large Arequipa - Perú \par}
+    
+    \end{titlepage}
+%%%%%%%%%%%%%%%%%%%%%%   CONTENIDO   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+    \vspace*{2px}
+	
+    \begin{center}	
+        \fontsize{17}{17} \textbf{Informe Trabajo Grupal}
+    \end{center}
+ 
+    \centerline{\textbf{\Large Tema: \itemTheme}}
+
+%%%%%%%   REPOSITORIO   %%%%%%% 
+    \section{URL de Repositorio Github}
+        \textbf{Link del Repositorio en Github: }    
+            \url{https://github.com/ReyserLyn/eda-lab2.git}
+
+%%%%%%%   EJERCICIOS   %%%%%%%     
+	
+    \section{Ejercicios designados}
+
+    \begin{itemize}
+        \item Fibonacci recursivo
+        \item Fibonacci iterativo
+        \item Fibonacci con memorización no iterativo
+        \item Fibonacci logaritmico
+        \item Informe sobre prueba realizadas para valores n grandes (1000, 10000, 1000000 ...)
+    \end{itemize}
+
+ %%%%%%%   SOLUCIÓN   %%%%%%%     
+    \section{Solución}
+        \subsection{Fibonacci Recursivo}
+
+        
+        \subsection{Fibonacci Iterativo}
+
+        
+        \subsection{Fibonacci con Memorización no Iterativo}
+
+        
+        \subsection{Fibonacci Logaritmico}
+
+
+        \subsection{Pruebas de Eficiencia}
+
+        
+ %%%%%%%   CONCLUSIONES   %%%%%%%     
+
+    \section{Conclusiones}
+        \begin{itemize}
+            \item 
+        \end{itemize}
+        
+%%%%%%%   REFERENCIAS   %%%%%%% 
+    \section{Referencias}
+    
+    \begin{itemize}			
+    	\item \url{ }
+    \end{itemize}	
+
+%%%%%%%   END   %%%%%%% 
+\end{document}
