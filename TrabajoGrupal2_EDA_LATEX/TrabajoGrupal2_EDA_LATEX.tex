@@ -26,6 +26,7 @@
 \usepackage{fancyhdr}
 \usepackage{listings}
 \usepackage{color, colortbl}
+\usepackage{amsmath}
 
 \lstdefinestyle{ascii-tree}{
     literate={├}{|}1 {─}{--}1 {└}{+}1 
@@ -162,29 +163,89 @@
 
         
         \subsection{Fibonacci Iterativo}
-
+            Para la implementación iterativa de Fibonacci se utliza un bucle para calcular los números de la secuencia en orden ascendente. Es eficiente y evita los problemas de desbordamiento de pila que pueden ocurrir con la implementación recursiva cuando se calculan números grandes. En esta implementación, se utiliza el tipo de dato BigInteger para manejar números grandes que puedan generarse en la secuencia de Fibonacci.
+            
+            \lstinputlisting[language=Java, caption={Fib\_Iterativo.java},numbers=left,]{src/Fib_Iterativo.java}	
+            
+            \textbf{Explicación de la función Main}\par  
+            \begin{itemize}
+                \item {El programa comienza por procesar los argumentos de la línea de comandos, donde args[0] se interpreta como el número para el cual se calculará el valor de Fibonacci y args[1] sería una indicación si mostrar el numero resultante o no.}
+                \item {Se registra el tiempo de inicio (tmpInicio) antes de realizar el cálculo.}
+                \item {Luego, se calcula el valor de Fibonacci llamando a la función fibonacci\_iterativo(x).}
+                \item {Se registra el tiempo de finalización (tmpFin) después de calcular el valor de Fibonacci y se calcula el tiempo transcurrido en milisegundos (tmpTrans).}
+                \item {Si el segundo argumento (args[1]) proporcionado es "true", el programa imprime el resultado de Fibonacci.}
+                \item {Finalmente, se imprime el tiempo de ejecución en milisegundos.}
+            \end{itemize}
+            
+            \textbf{Explicación de la función fibonacci\_iterativo}\par  
+            \begin{itemize}
+                \item {Se manejan los casos base para 0 y 1. Si num es igual o menor a 1, se devuelve el valor correspondiente (0 o 1) como un objeto BigInteger.}
+                \item {Dentro del bucle for, se calcula el valor de Fibonacci iterativamente utilizando tres objetos BigInteger: fibPrevPrev, fibPrev, y fibCurrent.}
+                \item {Los valores anteriores se actualizan en cada iteración para calcular el siguiente valor de Fibonacci.}
+                \item {Al final, se devuelve el valor calculado como un objeto BigInteger.}
+            \end{itemize}
         
         \subsection{Fibonacci con Memorización no Iterativo}
 
         
         \subsection{Fibonacci Logaritmico}
+            Para la implementación logarítmica de Fibonacci se utiliza la técnica de "exponenciación rápida". Esta estrategia eficiente permite calcular los números de Fibonacci en tiempo logarítmico en lugar de un enfoque lineal. La clave de esta eficiencia reside en el uso de matrices y la reducción de operaciones redundantes. Además, esta técnica es especialmente beneficiosa cuando se trabaja con números grandes de la secuencia de Fibonacci, ya que evita el desbordamiento de valores y mejora significativamente el rendimiento en comparación con la implementación recursiva o iterativa estándar.
 
+            \lstinputlisting[language=Java, caption={Fib\_logaritmico.java},numbers=left,]{src/Fib_logaritmico.java}	
 
-        \subsection{Pruebas de Eficiencia}
+            \textbf{Explicación de la función fibonacci\_logaritmico}\par  
+            \begin{itemize}
+                \item {La función fibonacci\_logaritmico calcula el valor de Fibonacci de manera logarítmica utilizando la técnica de exponentiación rápida.}
+                \item {Si n es menor o igual a 0, se devuelve 0 como un objeto BigInteger (caso base).}
+                \item {Se crea una matriz matriz inicializada con valores iniciales {{1, 1}, {1, 0}}, que se utiliza para realizar la exponentiación rápida.}
+                \item {Se llama a la función elevarMatriz para elevar la matriz a la potencia n - 1. El resultado se encuentra en matriz[0][0] y representa el valor de Fibonacci deseado.}
+            \end{itemize}
 
+            \textbf{Explicación de la función multiplicarMatriz}\par  
+            \begin{itemize}
+                \item {La función multiplicarMatriz implementa la multiplicación de dos matrices cuadradas A y B y actualiza la matriz A con el resultado. Este es un paso fundamental en la técnica de exponentiación rápida.}
+            \end{itemize}
+
+            \textbf{Explicación de la función elevar\_matriz}\par  
+            \begin{itemize}
+                \item {La función elevarMatriz implementa la técnica de exponentiación rápida para elevar la matriz matriz a la potencia n.}
+                \item {La recursión se utiliza para dividir el problema en subproblemas más pequeños.}
+                \item {Se llama a elevarMatriz(matriz, n \// 2) para calcular matriz\^(n\//2) y luego se multiplica matriz por sí misma utilizando multiplicarMatriz(matriz, matriz).}
+                \item {Si n es impar (n \% 2 != 0), se multiplica matriz por base para tener en cuenta el término adicional.}
+            \end{itemize}
         
+        \subsection{Pruebas de Eficiencia}
+            \subsubsection{Recursiva}
+            
+            \subsubsection{Iterativo}
+            \begin{center}
+                \includegraphics[width=0.8\textwidth]{img/tmp_iterativo.png}
+            \end{center}
+            Como se puede observar en la anterior imagen, para calcular el número 10 millones en la serie de Fibonacci se demoró 18 minutos aprox. 
+
+            \subsubsection{Memorización no iterativa}
+            
+            \subsubsection{Logaritmica}
+            \begin{center}
+                \includegraphics[width=0.8\textwidth]{img/tmp_logaritmica.png}
+            \end{center}
+            Como se puede observar en la anterior imagen, este método es muy eficiente, el mejor de los que se presentaron, pudiendo calcular el número \textbf{1 BILLÓN} en un tiempo de 28 minutos aprox. Mientras que el número 100 MILLONES en un tiempo de 1 minutos. 
+
  %%%%%%%   CONCLUSIONES   %%%%%%%     
 
     \section{Conclusiones}
         \begin{itemize}
-            \item 
+            \item {}
+            \item {La implementación de la secuencia de Fibonacci utilizando la técnica de "exponentiación rápida" es una estrategia altamente eficiente, especialmente cuando se trabaja con números grandes. Este enfoque logarítmico reduce significativamente el tiempo de cálculo y evita problemas de desbordamiento de valores, lo que lo convierte en una opción poderosa para calcular la secuencia de Fibonacci en escenarios donde la eficiencia es esencial.}
         \end{itemize}
         
 %%%%%%%   REFERENCIAS   %%%%%%% 
     \section{Referencias}
     
     \begin{itemize}			
-    	\item \url{ }
+    	\item \url{https://www.cs.us.es/~jalonso/cursos/i1m-15/temas/tema-24.html}
+    	\item \url{https://dev.java/learn/}
+    	\item \url{https://www.ugr.es/~eaznar/fibo.htm}     
     \end{itemize}	
 
 %%%%%%%   END   %%%%%%% 
