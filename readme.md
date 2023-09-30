@@ -21,7 +21,7 @@
         <tbody>
             <tr><td>ASIGNATURA:</td><td colspan="5">Estructura de Datos y Algoritmo</td></tr>
             <tr><td>TÍTULO DE LA PRÁCTICA:</td><td colspan="5">Técnicas de Diseño de Algoritmos</td></tr>
-            <tr><td>NÚMERO DE PRÁCTICA:</td><td>03</td><td>NRO. SEMESTRE:</td><td width="60px">  IV  </td></tr>
+            <tr><td>NÚMERO DE PRÁCTICA:</td><td>03</td><td>NRO. SEMESTRE:</td><td width="auto">  IV  </td></tr>
             <tr><td>FECHA DE PRESENTACIÓN:</td><td>30-09-2023</td><td>HORA DE PRESENTACIÓN:</td><td colspan="3">18:00</td></tr>
             <tr>
               <td colspan="4">NOMBRES:
