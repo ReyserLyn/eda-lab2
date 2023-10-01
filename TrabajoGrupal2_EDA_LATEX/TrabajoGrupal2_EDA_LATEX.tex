@@ -159,15 +159,8 @@
 
  %%%%%%%   SOLUCIÓN   %%%%%%%     
     \section{Solución}
-        \subsection{Fibonacci Recursivo}
-
-        
-        \subsection{Fibonacci Iterativo}
-            Para la implementación iterativa de Fibonacci se utliza un bucle para calcular los números de la secuencia en orden ascendente. Es eficiente y evita los problemas de desbordamiento de pila que pueden ocurrir con la implementación recursiva cuando se calculan números grandes. En esta implementación, se utiliza el tipo de dato BigInteger para manejar números grandes que puedan generarse en la secuencia de Fibonacci.
-            
-            \lstinputlisting[language=Java, caption={Fib\_Iterativo.java},numbers=left,]{src/Fib_Iterativo.java}	
-            
-            \textbf{Explicación de la función Main}\par  
+    
+        \textbf{Explicación de la función Main}\par  
             \begin{itemize}
                 \item {El programa comienza por procesar los argumentos de la línea de comandos, donde args[0] se interpreta como el número para el cual se calculará el valor de Fibonacci y args[1] sería una indicación si mostrar el numero resultante o no.}
                 \item {Se registra el tiempo de inicio (tmpInicio) antes de realizar el cálculo.}
@@ -176,6 +169,22 @@
                 \item {Si el segundo argumento (args[1]) proporcionado es "true", el programa imprime el resultado de Fibonacci.}
                 \item {Finalmente, se imprime el tiempo de ejecución en milisegundos.}
             \end{itemize}
+            
+        \subsection{Fibonacci Recursivo}
+            Para la implementación recursiva de la secuencia de Fibonacci se calcula mediante llamadas a funciones recursivas. En este enfoque, el número de Fibonacci en un índice n dado se calcula sumando recursivamente los números de Fibonacci en los índices n-1 y n-2, con casos base definidos para n=0 y n=1.
+
+            \lstinputlisting[language=Java, caption={Fib\_Recursivo.java},numbers=left,]{src/Fib_Recursivo.java}
+
+            \textbf{Explicación de la función fibonacci\_recursivo}\par  
+            \begin{itemize}
+                \item If \(n \leq 1\), then return \(\text{BigInteger.valueOf}(n)\): Si \(n\) es menor o igual a 1 (es decir, es un caso base), este método devuelve \(\text{BigInteger.valueOf}(n)\), que es 0 o 1, dependiendo del valor de \(n\).
+                \item Otherwise, return \(\text{fibonacci\_recursivo}(n - 1) + \text{fibonacci\_recursivo}(n - 2)\): Si \(n\) es mayor que 1 (es decir, no es un caso base), el método calcula el número de Fibonacci de forma recursiva llamándose a sí mismo con \(n - 1\) y \(n - 2\), y luego sumando los resultados. Este enfoque recursivo continúa hasta llegar a los casos base.
+            \end{itemize}
+        
+        \subsection{Fibonacci Iterativo}
+            Para la implementación iterativa de Fibonacci se utliza un bucle para calcular los números de la secuencia en orden ascendente. Es eficiente y evita los problemas de desbordamiento de pila que pueden ocurrir con la implementación recursiva cuando se calculan números grandes. En esta implementación, se utiliza el tipo de dato BigInteger para manejar números grandes que puedan generarse en la secuencia de Fibonacci.
+            
+            \lstinputlisting[language=Java, caption={Fib\_Iterativo.java},numbers=left,]{src/Fib_Iterativo.java}	         
             
             \textbf{Explicación de la función fibonacci\_iterativo}\par  
             \begin{itemize}
@@ -186,7 +195,18 @@
             \end{itemize}
         
         \subsection{Fibonacci con Memorización no Iterativo}
+            Para la implementación con memorización no iterativo de Fibonacci utilizamos un mapa de memorización que nos servirá para almacenar los números de Fibonacci que ya han sido calculados, lo que ayuda a evitar cálculos redundantes y mejora la eficiencia del algoritmo.            
+            Este enfoque es más eficiente que el enfoque puramente recursivo para calcular los números de Fibonacci, especialmente para valores más grandes de n, porque evita recalcular los mismos números de Fibonacci varias veces.
 
+            \lstinputlisting[language=Java, caption={Fib\_Memorizacion.java},numbers=left,]{src/Fib_Memorizacion_no_Iterativo.java}
+
+            \textbf{Explicación de la función fibonacci\_memorizacion}
+            \begin{itemize}
+                \item Es una función que calcula el número de Fibonacci para un índice dado \(n\) utilizando el enfoque de memorización (memoization).
+                \item La primera parte de la función. Verifica si \(n\) es menor o igual a 1. Si es así, significa que \(n\) es un caso base de la secuencia de Fibonacci, y simplemente devuelve \(n\) convertido en un objeto \texttt{BigInteger} utilizando \texttt{BigInteger.valueOf}(n). En este caso, el resultado será 0 para \(n=0\) y 1 para \(n=1\).
+                \item La segunda parte de la función. Si \(n\) no es un caso base (es decir, \(n\) es mayor que 1), verifica si el resultado para \(n\) ya está almacenado en el mapa de memorización (\texttt{memo}). Si el resultado ya está en el mapa, lo recupera utilizando \texttt{memo.get}(n) y lo devuelve. Esto evita calcular el mismo número de Fibonacci más de una vez y mejora la eficiencia del algoritmo.
+                \item La tercera parte de la función. Si \(n\) no es un caso base y el resultado no está en el mapa de memorización, se calcula el número de Fibonacci para \(n\) de manera recursiva. Esto se hace llamando a \texttt{fibonacci\_memorizacion}(n - 1) para obtener el número de Fibonacci para \(n - 1\) y \texttt{fibonacci\_memorizacion}(n - 2) para obtener el número de Fibonacci para \(n - 2\). Luego, se suman estos dos resultados para obtener el número de Fibonacci para \(n\). El resultado se almacena en el mapa de memorización (\texttt{memo.put}(n, result)) para futuras referencias y se devuelve como un objeto \texttt{BigInteger}.
+            \end{itemize}
         
         \subsection{Fibonacci Logaritmico}
             Para la implementación logarítmica de Fibonacci se utiliza la técnica de "exponenciación rápida". Esta estrategia eficiente permite calcular los números de Fibonacci en tiempo logarítmico en lugar de un enfoque lineal. La clave de esta eficiencia reside en el uso de matrices y la reducción de operaciones redundantes. Además, esta técnica es especialmente beneficiosa cuando se trabaja con números grandes de la secuencia de Fibonacci, ya que evita el desbordamiento de valores y mejora significativamente el rendimiento en comparación con la implementación recursiva o iterativa estándar.
@@ -216,6 +236,10 @@
         
         \subsection{Pruebas de Eficiencia}
             \subsubsection{Recursiva}
+            \begin{center}
+                \includegraphics[width=0.8\textwidth]{img/tmp_recursivo.png}
+            \end{center}
+            Como pueden ver el tiempo de ejecución es bastante para tan solo 50 números, por lo tanto no es recomendable utilizar el método recursivo, ya que al momento de su ejecución es muy redundante.
             
             \subsubsection{Iterativo}
             \begin{center}
@@ -224,6 +248,10 @@
             Como se puede observar en la anterior imagen, para calcular el número 10 millones en la serie de Fibonacci se demoró 18 minutos aprox. 
 
             \subsubsection{Memorización no iterativa}
+            \begin{center}
+                \includegraphics[width=0.8\textwidth]{img/tmp_memorización.png}
+            \end{center}
+            Es más eficiente que el recursivo de por si ya que este almacena valores y omite calculos ya redundantes, pero aún así no es la mejor alternativa.
             
             \subsubsection{Logaritmica}
             \begin{center}
@@ -235,7 +263,7 @@
 
     \section{Conclusiones}
         \begin{itemize}
-            \item {}
+            \item {El enfoque recursivo es útil para comprender la naturaleza de la secuencia de Fibonacci, pero no es eficiente para cálculos prácticos de números grandes. Por otro lado, el enfoque con memorización es altamente eficiente y es la opción preferida cuando se requieren cálculos precisos y rápidos de la secuencia de Fibonacci, incluso para números grandes. }
             \item {La implementación de la secuencia de Fibonacci utilizando la técnica de "exponentiación rápida" es una estrategia altamente eficiente, especialmente cuando se trabaja con números grandes. Este enfoque logarítmico reduce significativamente el tiempo de cálculo y evita problemas de desbordamiento de valores, lo que lo convierte en una opción poderosa para calcular la secuencia de Fibonacci en escenarios donde la eficiencia es esencial.}
         \end{itemize}
         
